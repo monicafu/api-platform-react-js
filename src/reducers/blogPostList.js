@@ -1,5 +1,4 @@
 import { BLOG_POST_LIST, BLOG_POST_LIST_ADD } from "../actions/actions";
-import { stat } from "fs";
 
 export default(state = {
     posts:null
