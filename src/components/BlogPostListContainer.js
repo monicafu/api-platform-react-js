@@ -1,28 +1,26 @@
 import React from 'react';
 import BlogPostList from './BlogPostList';
-import { blogPostList,blogPostAdd } from '../actions/actions';
+import { blogPostListFetch,blogPostAdd } from '../actions/actions';
 import { connect } from 'react-redux';
-import { requests } from '../agent';
 
 const mapStateToProps = state => ({
     ...state.blogPostList
 });
 
 const mapDispatchToProps = {
-    blogPostList,
-    blogPostAdd
+    blogPostAdd,
+    blogPostListFetch
 };
 
 class BlogPostListContainer  extends React.Component {
     componentDidMount() {
-        requests.get('/blog_posts').then(response => console.log(response));
         setTimeout(this.props.blogPostAdd,1000);
         setTimeout(this.props.blogPostAdd,3000);
         setTimeout(this.props.blogPostAdd,5000);
-        this.props.blogPostList();
+        this.props.blogPostListFetch();
     }
     render() {
-        console.log(this.props.posts);
+        console.log(this.props);
         return (<BlogPostList posts = {this.props.posts}/>)
     }
 }
